@@ -17,7 +17,7 @@ SRC_DIR = src
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 RM = rm -rf
-SRCS = $(addprefix $(SRC_DIR)/, main.c radix.sort.c operations.c utils.c small_sort.c)
+SRCS = $(addprefix $(SRC_DIR)/, main.c radix_sort.c operations.c utils.c small_sort.c)
 OBJS = $(SRCS: .c=.o)
 HEADERS = -I include -I $(LIBFT_DIR)
 
