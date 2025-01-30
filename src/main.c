@@ -6,7 +6,7 @@
 /*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:04:40 by rcorlett          #+#    #+#             */
-/*   Updated: 2025/01/28 12:41:09 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:29:02 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ int	main(int ac, char **av)
 {
 	t_stacks	*stacks;
 
-	validade_arguments(ac, av);
+	validate_arguments(ac, av);
 	stacks = malloc(sizeof * stacks);
 	if (stacks == NULL)
 		exit (1);
 	initialize_stacks(ac, av, stacks);
-	join_arguments(ac, av, stacks);
+	join_args(ac, av, stacks);
 	parse_numbers(stacks);
-	check_sorted_of_duplicate(stacks, 0);
+	check_sorted_or_duplicate(stacks, 0);
 	create_index(stacks);
 	if (stacks->a_size == 2 && stacks->a[0] > stacks->a[1])
 		swap("sa", stacks->a, stacks->a_size);

@@ -6,7 +6,7 @@
 /*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:36:37 by rcorlett          #+#    #+#             */
-/*   Updated: 2025/01/28 13:56:11 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:30:54 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	swap(char *str, int *array, int size)
 	temp = array[0];
 	array[0] = array[1];
 	array[1] = temp;
-	ft_putendl_ft(str, 1);
+	ft_putendl_fd(str, 1);
 }
 
 void	push(char *str, t_stacks *s)

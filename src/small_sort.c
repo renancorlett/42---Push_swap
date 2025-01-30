@@ -6,7 +6,7 @@
 /*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:14:50 by rcorlett          #+#    #+#             */
-/*   Updated: 2025/01/28 14:25:42 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:40:08 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sort_small(t_stacks *s)
 	while (s->b_size <= 1)
 	{
 		if (s->a[0] == 0 || s->a[0] == 1)
-			push("push", 1);
+			push("pb", s);
 		else
 			rotate(s->a, s->a_size, "up", "a");
 	}

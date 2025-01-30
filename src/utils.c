@@ -6,12 +6,11 @@
 /*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:26:03 by rcorlett          #+#    #+#             */
-/*   Updated: 2025/01/30 10:05:23 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:01:21 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <limits.h>
 
 void	check_sorted_or_duplicate(t_stacks *stacks, int i)
 {
@@ -47,7 +46,7 @@ void	parse_numbers(t_stacks *stacks)
 	i = 0;
 	while (temp[i] != NULL && temp[i][0] != '\0')
 	{
-		stacks->a[j++] = ft_atoi(temp[i++], stacks);
+		stacks->a[j++] = ft_atoi_ps(temp[i++], stacks);
 		free(temp[i - 1]);
 	}
 	free(temp);
@@ -102,7 +101,7 @@ void	create_index(t_stacks *stacks)
 	free(new_a);
 }
 
-int	ft_atoi(const char *n, t_stacks *stacks)
+int	ft_atoi_ps(const char *n, t_stacks *stacks)
 {
 	int	i;
 	int	result;
@@ -123,7 +122,7 @@ int	ft_atoi(const char *n, t_stacks *stacks)
 	{
 		if (result > INT_MAX / 10
 			|| (result == INT_MAX / 10 && (n[i] - '0') > INT_MAX % 10))
-			cleanup_and_exit(stacks, "Error\n");
+			free_and_exit(stacks, "Error\n");
 		if (!(n[i] >= '0' && n[i] <= '9'))
 			free_and_exit(stacks, "ERROR\n");
 		result = result * 10 + (n[i++] - '0');
