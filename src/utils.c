@@ -6,11 +6,12 @@
 /*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:26:03 by rcorlett          #+#    #+#             */
-/*   Updated: 2025/01/28 14:53:39 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:05:23 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include <limits.h>
 
 void	check_sorted_or_duplicate(t_stacks *stacks, int i)
 {
@@ -120,10 +121,12 @@ int	ft_atoi(const char *n, t_stacks *stacks)
 	}
 	while (n[i])
 	{
+		if (result > INT_MAX / 10
+			|| (result == INT_MAX / 10 && (n[i] - '0') > INT_MAX % 10))
+			cleanup_and_exit(stacks, "Error\n");
 		if (!(n[i] >= '0' && n[i] <= '9'))
 			free_and_exit(stacks, "ERROR\n");
-		result = result * 10 + (n[i] - '0');
-		i++;
+		result = result * 10 + (n[i++] - '0');
 	}
 	return (result * sign);
 }
