@@ -1,0 +1,77 @@
+Resumo da Ordem de Explicação:
+Header (push_swap.h): Definições de estrutura e protótipos das funções.
+Função Principal (main): Fluxo principal do programa, inicializando as pilhas, validando os argumentos e chamando o algoritmo de ordenação.
+Funções de Manipulação das Pilhas (swap, push, rotate): Operações fundamentais para a manipulação das pilhas.
+Funções de Ordenação (sort_three, sort_small, radix_sort): Algoritmos para ordenar as pilhas dependendo do tamanho.
+Funções Auxiliares (create_index, is_sorted, ft_atoi_ps): Funções para validações, indexação e conversão de dados.
+Função de Finalização e Liberação de Memória (free_and_exit): Libera recursos e encerra o programa.
+
+
+
+
+
+PUSH_SWAP.H:
+	Cabeçalho para implementar o algorítmo push_swap o qual tem a função de ordenar uma pilha usando um conjunto limitado de operações;
+	
+IFNDEF E DEFINE: Impede que meu conteúdo seja incluído mais de uma vez;
+
+T_STACKS: Estrutura usada para armazenar informações da pilha dos inteiros;
+
+"A" e "b" são ponteiros, a_size e b_size são os tamanhos das pilhas de a e b, join_args ponteiro para string usada para armazenar argumentos ou entrada de dados.
+
+
+
+MAIN.c:
+
+FREE_AND_EXIT:
+1.Libera a memória alocada da pilha(stacks) "a" e pilha "b", Libera memória para join_args e t_stacks;
+2.EXIT: encerra o programa.
+
+VALIDATE_ARGUMENTS:
+1.Verifica se existem argumentos no programa, se estiver vazio ou só espaços retorna "ERROR\n";
+2.Verifica se existem caracteres invalidos ou sinais soltos, retorna "ERROR\n";
+
+JOIN_ARGS:
+1.Inicializa result como string vazia;
+2.Junta minha string vazia com av[i];
+3.Libera memória do result anterior;
+4.Adiciona um espaçco entre os argumentos e libera memória para o current;
+5.Copia o conteúdo de current para stacks->join_args, se não alocar memoria, retorna "ERROR\n".
+6.Libera a memória de current;
+
+MAIN:
+Valida os argumentos, aloca memória, se falhar, encerra o programa com erro. Inicializa as pilhas a e b, junta os argumentos em uma string, processa os números para convertê-los em INT, verifica se as pilhas estao ordenadas e se há duplicatas, cria um índice para os números para ajudar na ordenação.
+CONDIÇÕES: A depender do tamanho da pilha, chama a função adequada para ordenar:
+SWAP: troca dois elementos desordenados;
+SORT_THREE: ordena pilha com três elementos;
+SORT_SMALL: ordena pilhas pequenas com até 5 elementos;
+RADIX_SORT: usado se a pilha for maior.
+Volta-se a verificar se a pilha está ordenada e se tem duplicatas. Libera a memória e sai.
+
+
+
+OPERAÇõES.c:
+SWAP: Se a pilha for menor ou igual a zero não faz nada. Se existir, armazena o primeiro valor da pilha, coloca o segundo valor em primeiro lugar, coloca o primeiro valor em segundo lugar e imprime a troca feita.
+PUSH:Verifica se é "pa"(push a), se b estiver vazia não faz nada. Pega-se o primeiro valor de b, move-se todos os elementos uma posição a frente, primeiro valor de b vai para o topo da pilha a, diminui o tamanho de b e aumenta o de a. Faz a mesma coisa, só que iniciando por "pb"(push b). Imprime a operação realizada.
+ROTATE:Verifica se a rotação é pra cima, pega o primeiro valor da pilha e move para esquerda, colocando esse primeiro valor no final, imprime "r" indicando operação realizada para cima.Verifica se a rotação é pra baixo, pega o ultimo valor da pilha e move para direita, colocando esse primeiro valor no início, imprime "rr" indicando operação realizada para baixo.
+
+
+
+RADIX_SORT.c:
+IS_SORTED: Se um elemento for maior que o próximo a pilha não está organizada, caso contrário, a pilha está ordenada.
+SORT_STACK_B: Verifica o bit atual se for 0 rotaciona a pilha b, se for 1, empurra de volta para pilha a, por fim, se já estiver ordenada, empurra todos elementos da pilha b para a.
+RADIX_SORT: Determina o número de bits necessários para representar os números, enquanto a pilha não estiver ordenada verifica o bit atual da pilha a, se for 0, empurra para b, se for 1, rotaciona a pilha a. Ordena a pilha b com base no bit atual. Quando todos bits forem processados, empurra de b para a até que a pilha b esteja vazia.
+
+
+
+UTILS.c:
+CHECK_SORT_OR_DUPLICATE: Verifica duplicatas, caso exista, retorn "ERROR\n". Se estiver ordenado, finaliza.
+PARSE_NUMBERS: Divide a string de argumentos para palavras, converte palavras em inteiros, libera memória.
+INITIALIZE_STACKS: count words para contar palavras separadas por espaços, aloca memória para pilha e para pilha b.
+CREATE_INDEX: Cria um novo array para armazenar os índices, se não existir, retorna "ERRO\n", conta quantos números são menores que o número na posição i, atualiza a lista com os índices calculados e libera memória para um novo array.
+ATOI: Ignora espaços e tabulações, verifica se há estouro de valor, verifica se existe caractere inválido e retorna o valor convertido considerando o sinal.
+
+
+
+
+
